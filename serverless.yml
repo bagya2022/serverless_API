@@ -76,9 +76,15 @@ functions:
     events:
       - http: ANY /
       - http: 'ANY {proxy+}'
+      - http:
+          path: /test
+          method: get
   hello:
     handler: handler.hello
-
+    events:
+       - http:
+           path: /hello
+           method: get
   loginAPI:
      handler: Controller/login.handler
      events:
@@ -88,6 +94,9 @@ functions:
         - http:
             path: /register
             method: post
+        - http:
+            path: /allusers
+            method: get
 
   productAPI:
     handler: Controller/product.handler
